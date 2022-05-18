@@ -1,6 +1,6 @@
 {
-    "token": "OTI0MTQ1NTkzOTg5ODg2MDMy.GRkPTB.6Ee__j2lI8a1o6UQyzPGano-9ZhVF_uOZNKX_A",
-    "prefix": "13.",
-    "mongooseConnectionString": "mongodb://mblan1:llanle2002@v13-shard-00-00.flur8.mongodb.net:27017,v13-shard-00-01.flur8.mongodb.net:27017,v13-shard-00-02.flur8.mongodb.net:27017/?ssl=true&replicaSet=atlas-txq79n-shard-0&authSource=admin&retryWrites=true&w=majority"
+    "token": "TOKEN",
+    "prefix": "",
+    "mongooseConnectionString": "Link"
 }
 
