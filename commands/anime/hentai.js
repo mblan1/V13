@@ -1,15 +1,12 @@
 const  { Client, Message, MessageEmbed} = require('discord.js');
 const API = require('anime-images-api');
-const { prefix } = require('../../config.json')
-
 const image_api = new API()
 
 module.exports = {
-    name: 'punch',
-    description: 'Punch by anime image',
-    usage: `${prefix}punch <tag member>`,
+    name: 'hentai',
+    description: 'anime image',
     timeout: 5000,
-    permission: 'user',
+    permission: 'UwU Role',
 
     /**
      * @param {Client} client
@@ -19,10 +16,11 @@ module.exports = {
 
     run: async(client, message, args) => {
         try {
-            const memTag = message.mentions.members.first();
-        if(!memTag) return message.reply('Please tag a member!')
+            const uwuRole = message.guild.roles.cache.some(roleID => roleID === '943483891677814784')
 
-        message.channel.send('Working on it!')
+            if(!uwuRole) return message.reply('You dont have `UwU Role` to use this command!')
+        const channelID = client.channels.cache.get('943484762016866335')
+        channelID.send('Working on it!')
 
         const a = new MessageEmbed()
             .setColor('PURPLE')
@@ -32,11 +30,11 @@ module.exports = {
             .setTimestamp()
 
 
-        image_api.sfw.punch().then(res => {
-            a.setDescription(`${memTag} has just been punched by <@${message.author.id}>`)
+        image_api.nsfw.hentai().then(res => {
+            a.setDescription(`UwU`)
             a.setImage(res.image)
 
-            message.reply({
+            channelID.send({
                 content: 'Ting Ting!!!',
                 embeds: [a]
             })
