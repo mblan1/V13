@@ -41,7 +41,7 @@ module.exports = {
                 })
             })
             message.channel.send({
-                content: '`All commands have benn reloaded`'
+                content: '`All commands have been reloaded`'
             })
         } catch (e) {
             message.channel.send({

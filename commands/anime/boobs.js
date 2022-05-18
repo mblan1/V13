@@ -3,7 +3,7 @@ const API = require('anime-images-api');
 const image_api = new API()
 
 module.exports = {
-    name: 'hentai',
+    name: 'boobs',
     description: 'anime image',
     timeout: 5000,
     permission: 'UwU Role',
@@ -17,7 +17,7 @@ module.exports = {
     run: async(client, message, args) => {
         try {
         const uwuRole = message.member.roles.cache.some(r => r.id === '943483891677814784')
-        if(!uwuRole) return message.reply('You dont have `UwU Role` to use this command!') 
+        if(!uwuRole) return message.reply('You dont have `UwU Role` to use this command!')       
         const channelID = client.channels.cache.get('943484762016866335')
         channelID.send('Working on it!')
 
@@ -29,7 +29,7 @@ module.exports = {
             .setTimestamp()
 
 
-        image_api.nsfw.hentai().then(res => {
+        image_api.nsfw.boobs().then(res => {
             a.setDescription(`UwU`)
             a.setImage(res.image)
 

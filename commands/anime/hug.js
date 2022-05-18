@@ -1,12 +1,15 @@
 const  { Client, Message, MessageEmbed} = require('discord.js');
 const API = require('anime-images-api');
+const { prefix } = require('../../config.json')
+
 const image_api = new API()
 
 module.exports = {
-    name: 'hentai',
-    description: 'anime image',
+    name: 'hug',
+    description: 'Hug by anime image',
+    usage: `${prefix}hug <tag member>`,
     timeout: 5000,
-    permission: 'UwU Role',
+    permission: 'user',
 
     /**
      * @param {Client} client
@@ -16,24 +19,24 @@ module.exports = {
 
     run: async(client, message, args) => {
         try {
-        const uwuRole = message.member.roles.cache.some(r => r.id === '943483891677814784')
-        if(!uwuRole) return message.reply('You dont have `UwU Role` to use this command!') 
-        const channelID = client.channels.cache.get('943484762016866335')
-        channelID.send('Working on it!')
+            const memTag = message.mentions.members.first();
+        if(!memTag) return message.reply('Please tag a member!')
+
+        message.channel.send('Working on it!')
 
         const a = new MessageEmbed()
-            .setColor('PURPLE')
+            .setColor('PINK')
             .setFooter({
                 text: 'Just for fun haha'
             })
             .setTimestamp()
 
 
-        image_api.nsfw.hentai().then(res => {
-            a.setDescription(`UwU`)
+        image_api.sfw.hug().then(res => {
+            a.setDescription(`${memTag} has just been hugged by <@${message.author.id}>`)
             a.setImage(res.image)
 
-            channelID.send({
+            message.reply({
                 content: 'Ting Ting!!!',
                 embeds: [a]
             })
