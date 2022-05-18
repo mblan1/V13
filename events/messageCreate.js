@@ -2,11 +2,15 @@ const client = require("../index");
 const { Collection } = require('discord.js');
 const ms = require('ms');
 const { prefix } = require('../config.json')
+// const db = require('../dataBase')
 
 const Timeout = new Collection();
 
 client.on("messageCreate", async(message) => {
             try {
+                // set prefix
+                // const serverData = await db.get(message.guildId) || {prefix: prefix};
+                // const prefix = serverData.prefix
                 if (
                     message.author.bot ||
                     !message.guild ||
@@ -22,7 +26,7 @@ client.on("messageCreate", async(message) => {
                 const command = client.commands.get(cmd.toLowerCase());
 
                 if (!command) return message.channel.send({
-                    content: 'Incorrect Command!'
+                    content: `Incorrect Command!. Type ${prefix}help to see all commands`
                 });
                 if (command) {
                     if (command.timeout) {
